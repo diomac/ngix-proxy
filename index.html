@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Nginx Proxy Configuration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #161b22;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-top: 0;
+            text-align: center;
+            color: #c9d1d9;
+        }
+
+        p {
+            margin-top: 10px;
+            color: #c9d1d9;
+        }
+
+        ul {
+            color: #c9d1d9;
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        code {
+            font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            background-color: #0d1117;
+            padding: 2px 4px;
+            color: #c9d1d9;
+            border-radius: 4px;
+        }
+
+        pre.code-block {
+            background-color: #0d1117;
+            padding: 10px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        pre.code-block code {
+            font-size: 13px;
+            color: #2cbe4e;
+        }
+
+        .environment {
+            color: #f85149;
+        }
+
+        .comment {
+            color: #8b949e;
+        }
+
+        .motivational-phrase {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #c9d1d9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Nginx Proxy Configuration</h1>
+    <p class="motivational-phrase">Nice is running!</p>
+    <p>Make sure to map the following environment variables in the containers that will be redirected by the proxy:</p>
+    <ul>
+        <li><code>VIRTUAL_HOST</code>: The hostname or domain name associated with the service. Example: <code>example.com</code></li>
+        <li><code>VIRTUAL_PATH</code>: The path prefix or pattern to match for the service. Example: <code>/api</code></li>
+        <li><code>VIRTUAL_PORT</code>: The port on which the service is listening. Example: <code>8080</code></li>
+    </ul>
+    <p>These environment variables will be used by the Nginx proxy to route the incoming requests to the correct backend service.</p>
+    <p>Example YAML snippet:</p>
+    <pre class="code-block">
+            <code>
+expose:
+  - <span class="environment">8080</span>
+environment:
+  - <span class="environment">VIRTUAL_PATH=/api</span>
+  - <span class="environment">VIRTUAL_HOST=diomacpc</span>
+  - <span class="environment">VIRTUAL_PORT=8080 <span class="comment"># default 80</span></span>
+            </code>
+        </pre>
+</div>
+</body>
+</html>

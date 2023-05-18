@@ -1,3 +1,7 @@
+export VIRTUAL_HOST := $(shell hostname)
+export VIRTUAL_PATH = /nginx-proxy-running
+
+
 .PHONY: dev down help
 .DEFAULT_GOAL := help
 
@@ -13,6 +17,8 @@ dev:
 	@docker network create diomac || true
 	@echo "Starting nginx-proxy..."
 	@docker-compose up -d
+	@echo ""
+	@echo "Access: http://$(VIRTUAL_HOST)$(VIRTUAL_PATH)"
 
 down:
 	@echo "Stopping and removing containers..."

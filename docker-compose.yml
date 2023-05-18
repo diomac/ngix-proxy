@@ -10,6 +10,20 @@ services:
       - "80:80"
     networks:
       - diomac
+  example:
+    image: nginx:latest
+    container_name: diomac-nginx-proxy-example
+    expose:
+      - 80
+    volumes:
+      - ./index.html:/usr/share/nginx/html${VIRTUAL_PATH}/index.html:ro
+    environment:
+      - VIRTUAL_PATH=${VIRTUAL_PATH}
+      - VIRTUAL_HOST=${VIRTUAL_HOST}
+    networks:
+      - diomac
+    depends_on:
+    - nginx-proxy
 networks:
   diomac:
     external: true
