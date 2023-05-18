@@ -1,0 +1,15 @@
+version: '3'
+services:
+  nginx-proxy:
+    image: jwilder/nginx-proxy:latest
+    container_name: diomac-nginx-proxy
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+    ports:
+      - "80:80"
+    networks:
+      - diomac
+networks:
+  diomac:
+    external: true
